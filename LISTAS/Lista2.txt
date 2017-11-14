@@ -1,0 +1,39 @@
+1) A camade de transporte eh a responsavel pela /comunicacao logica/ entre as /processos/ rodando em hosts distintos, dando à aplicacao   a imppressao de que ambos estao diretamente conectados (i.e, na mesma maquina).
+
+2) TCP (Transmision Control Protocol) e UDP (User Datagram Protocol).
+TCP garante transfefencia confiavel de dados (atraves de controle de fluxo, acks, timers, etc) e controle de congestao (adequa a utilzacao da rede conforme ela suporta)
+
+3) Nao garantia de largura de banda nem de delay maximo de atraso.
+
+4) As citadas acima pois a camada de transporte nao possui controle sobre a camada de redes nem sabe o que esta acontecendo nela.
+
+5) (Multiplexacao e Demultiplexacao) eh o processo que permite que se entregue corretamente os segmentos ao processo destino; eh necessario pois um mesmo host pode (e geralmente estah) rodando varios processos.
+[EFETUADOS PELOS HOSTS RESPECTIVOS]
+
+Demultiplexacao: tarefa de entregar o segmento da camada de transporte para o SOCKET correto.
+
+MUltiplexacao: processo de criacao de segmentos (atraves dos /chunks/ (pequena quantidade de dados da mensagem),  atraves de mensagens DE DIFERENTES SOCKETS, e passagem desse segmento para a camada de transporte.
+
+6) - Nao orientado a conexao:
+[	MULTIPLEXACAO]: camada de transporte da fonte cria segmentos a partir de chunks de dados de DIVERSOS sockets abertos. Entao, envia-os pela camada de transporte aos IP's adequados.
+[DEMULTIPLEXACAO]:  camada de transporte do receptor analisa o segmento, identifica a porta destino a que ele se destina E entrega ao SOCKET aberto naquela porta.
+
+- Orientado a conexao:
+[	MULTIPLEXACAO]: 
+
+[DEMULTIPLEXACAO]:	primeiramente, um socket TCP eh identificado por 4 elementos (2x IP e 2x Porta)
+
+
+7. Explique como funciona o protocolo UDP.
+Eh um protocolo nao orientado a conexao; logo, nao existe a nocao de /handshaking/. Cada segmento UDP possui por padrao apenas alguns poucos campos: IP  fonte/destino, SOCKET fonte/destino e check sum. 
+Este ultimi eh um numero que tem como objetivo verificar a integridade dos dados.
+
+8) As vantagens de se utilizar o UDP sao que ele provem maior controle sobre como serah feita a transmissao (taxa minima por exemplo, inorando qqer fatores caso se  deseje), sem delay gerado por conta do controle de lfuxo/congestionamento, BAIXO OVERHEAD NO CABECALHO, envio de dados "imediato" (sem frescura de estabelecer conexao e etc)
+	
+26) Controle de fluxo eh limitar  a quantidade de dados trasnmitida de acordo com o tamanho da janela do receptor.
+Controle de congestionamento eh o quanto o  sender pode enviar /de acordo 
+com o congestionamento da rede/, baseado em Timeout e  acks. OBVIAMENTE, esse controle de congestionamnto NAO PODE permitir uma taxa de transmissao seja maior do que o limite estabelecido pelo controle de fluxo.
+
+27) Quantidade de dados a serem transmitidos maior do que a quantidade total de banda disponinvel.
+
+31) 

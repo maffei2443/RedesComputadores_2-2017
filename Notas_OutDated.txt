@@ -1,0 +1,343 @@
+SQN 201 BLOCO A 100
+########
+DNS : domain name system
+RTT : Round trip time (tempo de ida e volta de um pacote, do cliente para o servidor e volta)
+8.8.8.8
+
+Duvidas:
+1. Eh por conta do DSL que em alguns lugares quando se atende o telefone a internet cai??
+2. O cabo coaxial eh tbm usado para passar internet?
+3. Como ocultar meu roteador igual aaquele slide?
+4. 	DEVORAR CAPTULO 8 :: FALA SOBE SEGURANCA!!!
+
+Cap. 2
+5. Sockets SAO APIs?
+
+
+										1.1 What is the internet?
+
+										1.1.1 A nuts-and-bolts description
+
+Packets :: packages of infomation
+
+End-sistems :: conectadospor uma rede de /ligacoes de comunicaçao/
+
+Transmission rate :: measured in bits/second
+
+>>>	Package switch :: receives and forward packages (usados principalmente em nivel de redes de acesso)	<<<
+Router :: usados tipicamente no nucleo da rede
+
+Route/path :: the sequence of communicaiton links used from a package
+				to "reach its goal".
+
+Internet Service Providers (ISPs) :: 	-network of packets switches and communications system (EACH ISP is)
+										-are whereby the end-systems access the internet
+										-provem acesso aa internet aos provedores de conteudo
+										-gerenciadas de forma independente, usam o protocolo IP e segue certas 
+							  			convencoes de nomes
+Main Protocols :: -TCP === Transmission Control Protocol
+				  -IP === Internet Protocol
+
+
+										1.1.2 A service desscription
+Internet :: uma infraestruturura que provem servicos
+
+Distributed Applications :: applications those involve multiple end systems those who exchange data between(
+							therefore, basicly all internet appplications). Ex: streaming, login remoto, P2P, ...
+
+OBS: a internet corre nos <sistemas finais>, NAO nos encaminhamentos de pacotes no nucleo da rede
+
+API: Application Programming Interface.
+	 -all end systems must use it so that they can corretlc send its messages
+
+Internet API: a set of rules, each of then must be followed by the application so that the message can
+			  be delivered by the internet to the destination program
+
+Network Protocols:-usados em QUALQUER que seja a atividade na internet que envolva dois ou mais sistemas comunicantes
+				  
+def PROTOCOLO
+	um <protocolo> define o formato e a ordem em que mensagens serao enviadas de uma entidade aa outra,
+	bem como as acoes tomadas na transmissao e/ou recepcao de uma mensagem ou outro evento.
+end
+
+										1.2 The Network Edge
+The systems called <end systems> are reffered as this cause they are on the <Edge of the network>.
+Ex of End-Systems :: PC, laptop, e-mail servers
+
+End-Systems :: also called >HOSTS<, because they hosts (run) application programs 
+
+		Cliente
+Hosts /
+	  \
+	  	Servidor
+
+Data centers  :: onde se localizam a maioria dos servidores dos buscadores que utilizamos.
+				-conjunto (conglomerado) de servidores 
+
+
+										1.2.1 Access Network
+
+OBS: applicaitions and end-systems are the Edge of the network
+
+def Access Netowrk
+	The network that <PHYSICALLY> connects an end_system to the FIRST Router (known as the "edge router")
+	on a path from the end system to any put any other distance system.
+end
+
+Diginal Subscribel Line (DSL) and cable : two most commom connections used today for home access 
+
+DSL: -uses the phone line, but other frequency than tradiotional disk-service.
+	 - the most modern DSL-moden take digital data and translates it to HIGH frequencies tone for transmission
+	 via telephone wire
+	 -em geral, ACESSO ASSIMETRICO (DonwloadRate != UpLoadRate)
+	 -projetado para CURTAS distancias (!!!)
+
+Cable inernet access: -uses the >>> TELEVISION company's infraestructure <<<  
+					  - multiplos usuarios simultaneos congestionam MUITO a rede, pois (?)
+
+Digital Line Subscriber Acess Multiplexer (DLSAM) ::  
+													  -localizado no escritorio centrar das telecons; usados
+													  para traduzir os dados enviados pelos usuarios de analogico 
+													  para formato digital
+
+Hybrid Fiber-Coaxial (HFC) :  -geralmente assimetrico
+							  -
+
+
+
+
+
+
+
+
+Mensagem :: quebrada em /pacotes/
+
+Gateway :: porta de saida
+
+Nucleo da rede: 	->>> deve transportar os pacotes <<<
+					-cada pacote transmitido a total capacidade de ligacao
+								FUNCOES PRINCIPAIS DO NUCLEO DA REDE
+					->>>>>>>>>>>>> Roteamento :: tomar decisao para onde vai mandar algum pacote (definir um caminho)
+					->>>>>>>>>>>>> Forwarding :: move pacotes da entrada do roteador para a saida paropriada (informante
+												de caminho; o cara que dah informacao)
+					#	Cada pacote eh encaminhado INDEPENDENTEMENTE
+					@@@@@@@@@@@@@@ Circuit Switching (funcionalidade implementavel) :: 	famoosa "faixa excusiva"
+TDM :: Time Division Multiplexing		\	Formas de faser o switch em rede
+FDM :: Frequency Division Multiplexing	/
+
+		Package switching :: 	-store-and-forward (aguarda o pacote toodo chegar)
+								-
+								- Atrado fim a fim: tempo TOTAL que demora a transmissao total da mensagem
+								-
+
+Estrutura da Internet
+		- sistemas-finais conectados a Internet via ISPs (INTERNET SERVICE PROVIDERS)
+		- IXP : Internet Exchange Point ::: estrutura que conecta entre ISPs;
+		- Content Provider Network :: "area" onde os PRINCIPAIS servicos provedores de conteudos se localizam.
+										Obviamente, ficam entre ISPs.
+
+		-RetardoTotal == Ret.Processamento (hj esse tempo eh min)		
+								+	 
+						Ret.Enfileiramento
+							 	+
+						Ret.Transporte (transmissao; depende >tam do pacote< e >>largura de banda<<)
+								+ 
+						Ret.Propagacao
+							
+
+		Ret.Transporte :: delay de transmissao.
+						  L = tamanho do pacote
+						  R = largura de banda
+						  R.T = L/R
+		
+		Ret.Propagacao :: delay de propagacao
+						  d = tamanho da distancia fisica			
+						  s = speed de propagacao
+						  R.P = d / s
+	
+		Ret.Enfileiramento
+						  R = largura de banda 		(bps == bits por segundo)
+						  L = comprimentodo pacote  (bits) 				  		  
+						  a = frequenncia media de chegada de pacotes
+						  La/R ~ 0 == MARAVILHA
+						  La/R ~ 1 == LERDO P/ CARAMBA
+
+
+*** aka == also know as ***
+Perda de pacote:		-por conta da capacidade finita do buffer
+						- chegam pacotes alem da capacidade do buffer (causando /PERDA/)
+						- pacote perdido PODE ser retransmistido pelo roteador anterior
+
+Gargalo:				-geralmente ocorre por conta dos >>enlaces de acesso<<						
+
+										1.5 Protocol Layer
+
+Layers:					- cada camada implementa um servico!
+						- CONFIAR nos servicos providos pelas camadas inferiores
+
+Motivacao:				- dividir para conquistar (classico)													
+						- estruturas explicitas permitem >>identificacao de relacionamentos<< de partes de
+							sistemas complexos
+						- MODULARIZACAO para permitir facilidade de manutenabilidade e evolucao (idealmente)	
+						>> CRITICAS
+
+>>>>>>>>>>>>>>>>>	PILHAAA DE PROTOCOLOS DA INTERNET 	 <<<<<<<<<<<<<<<
+camada de aplicacao: 	
+
+camada de transporte: transferencia de DATAGRAMAS de processos (TCP e UDP)
+	
+camada de redes: 	roteamento da fonte para o destino (IP, protocolos de routeamento)
+ 	### DATAGRAMAS: pacotes na camada de redes
+
+camada de enlace:	transferencia entre elementos de rede ADJACENTES (Ethernet, 802.111(WiFi), PPP)
+
+camada fisica:	bits no fio (perguntar aos engenheiros eletricistas :D )
+
+									1.6 Network Security
+
+!@#$ A internet NAO FOI FEITA (originalmente) com esse foco.
+
+- Virus : requer ativacao do usuario
+
+- Worm : age siilenciosamente, passado ao se receber objetos infectados
+
+- Packet "snifffing" : usa coneccoes compartilhadas
+	obs: baixar >>wireshark<<
+
+- IP spoofing : envio de pacote com FALSO endereco de origem	
+
+									PRINCIPIOS DA ARQUITETURA DA INTERNET HOJE
+
+		- minimalismo, autonomia
+		- "servico de melhor esforco"
+		- roteadores routeless
+		- controle descentralizado
+
+Killer App :: aplicacoes que requerem evolucao da infraestrutura da internet
+				-principais exemplos : P2P file sharing, mensagem instantanea 		
+
+					>>>>				CAPITULO 2: APPLICATION LAYER					<<<<
+
+Arquitetura cliente-servidor: 	
+								SERVIDOR :: 
+	 								- usados servidor SEMPRE ligado
+									- endereco IP permanente
+									- || data centers || conforme o nivel de solicitde aummenta
+								CLIENTE:
+									- comunica-se com o servidor
+									- comunicacao nao-perene
+									- nao precisa de IP fixo
+									- nao se comunica diretamente com outros clientes :(
+
+Arquitetura P2P:				- SEM servidor always-on (casa par eh cliente E servidor, ateh mesmo 
+																					simultaneamente)
+								- comunicacao DIRETA entre dispositivos finais
+								- auto-escalabilidade (pq cada par eh cliente E servidor)
+								- pares NAO ESTAO conectados de forma perene
+								- IPs variaveis
+								- gerenciamento >>> COMPLEXO <<<
+
+Processo: uma programa em execucao.
+			- Em uma mesma maquina:	inter-process comunication (IPC); definida pelo SO
+			- Em maquinas diferentes, se comunicam por MENSAGENS (nivel da camada de aplicacao)
+			- Em aplicacaoes P2P, um processo pode ser cliente E servidor
+
+>> Sockets:						- eh uma interface
+	("porta")					- API (application program interface)						
+								- permite que acesse os protocolos da camada de TRANSPORTE
+								- 
+
+>>>> PROTOCOLO DE CAMADA DE APLICACAO DEFINE 
+			- tipode de mensagens trocadas	(requisicao, respota..)
+			- sintaxe das mensagens
+			- semantica das mensagens
+			- REGRAS p/ quando e como processar e enviar/receber mensagens (ex: Browser lendo HTML)
+
+°°°°°°	Quais sao as necessidades de uma aplicacao em rede?		ºººººº
+
+*Integridade de dados*		- Nivel depende da aplicacao
+							- Alguns nao toleram falhas (transf. bancarias)
+
+*Timing*					- Algumas aplicacoes precisam de delays BAIXOS
+								(telefonia pela internet, JOGOS ONLINE!!!)
+
+*Vazao*						- Aplicacoes as vezes requerem ALTAS tazas de transmissao reais para serem >>efetivas<<
+								(ex, streaming de video)
+							- Existem aplicacoes "elasticas", nao tem funcionamento taao prejudicado pela baixa 
+							vazao
+
+*Seguranca*					- Encriptacao, integridade de dados
+
+Alguns protocolos de transporte de servicos..
+	1. TCP  service
+		- transporte confiavel
+		- controle de fluxo (taxa de recepcao nao deve extrapolar
+							o quanto o receptor consegue processar)
+		- controle de congestao : precebe que a rede esta ocupada, e se ajusta ao congestionamento					
+		- 
+
+
+-Seguranca no TCP 			- sem encriptacao
+(ver nos slides)			*SSL: 	- provem coneccao TCP encriptada
+							- integridade de dados
+							- autenticacao em dispositivos finais
+
+[COMPLEMENTAR]
+
+HTTP	
+	- usa TCP
+	- nao armazena estado (conteudo deve ser autocontido)
+	-
+Conexoes HTTP:
+	* modo nao persistente : p/ cada objeto requisitado, deve-se abrir uma conexao TCP, requisitar o objeto,
+							encerra a conexao.
+								PROBLEMAS:	
+											- oientado a conexao; portanto, a cada inicio de coneao deve-se
+												esperar um tempo 
+	* modo persistente : estabeleve conexao TCP com o server e so termina quando estiver afim						
+
+
+	- Dois tipos de mensagens : requisicao e resposta
+
+-Cookies:
+	USOS:
+		- autorizacao
+		- carrinhos de comprar
+		- recomendacoes
+		- sessoes de email
+
+	Como manter "estado":
+		- protocolos
+		- cookies
+
+-Web caches (servidor proxy)
+
+-Eletronic Mail 
+	* Componentes principais :
+		1. agentes usuarios
+		2. mail servers
+		3. Simple Mail Transfer Protocol : SMTP
+
+-DNS (Domain Name System)
+		
+		*Serviços:	- traduzir nome->IP
+					- criacao de apeliso
+					- cria apelido p/ servidor de email
+					- email exchange (IP separado para o endereco de email!!)
+					- distribuicao de carga (varias maquinas correspondentes a um mesmo IP (faz sorteio pra ver
+												qual vai servir))
+
+		
+		*Estrutura:
+			- database distribuida (implementada em hierarquia de varios serviores). Obj: queda ao derrubar a p** toda
+			- 
+
+* Servidores DNS Raiz
+		- 	chamados pels servidores locais quando estes nao conseguem resolver o nome
+		- root name server :	*  contata autori
+
+* Servidores DNS TopLevelDomain (TLD)
+
+* Servidores DNS de Autoridade	
+
+* Servidores DNS Locais (principalmente usado pra WebCache)

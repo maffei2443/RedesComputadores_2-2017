@@ -1,0 +1,109 @@
+1) 	Outras aplicaoes :: text messaging, remote login, P2P file sharing, social networking, search, ...
+- E-mail <--> Protocolo SMTP (Simple Mail Tranfer Protocol)
+	- Web <--> HTTP (Hypertext Transfer Protocol)
+	- Transferencia de Arquivos <--> FTP(File Transfer Protocol)
+	- Web com conexao segura <--> HTTPS (HTTP Secure)
+	- Acesso a servido <--> SSH (Secure Shell)
+
+2) Aplicacao que roda em diferentes sistemas finais [GERALMENTE DIFERENTES] e se comunica atraves da rede.
+
+3) Pq a porra da aplicacao eh fim a fim, rodando nas maquinas do usuarios.
+
+Porque a aplicacao /confia/ nas camadas abaixo dela para fazer o transporte adequado dasinformacoes que ela deseja mandar. Dessa forma, a aplicacao precisa apenas se preocupar em usar um dos protocolos jah 
+disponiveis para que as camadas inferiores providenciem a entrega da mensagem para o destinatario espeficicado. Cabe aa aplicacao portanto apenas definir como dispositivos finais que a rodaam irao se comunicar , ou seja, qual a semantica das mensagens trocadas entre eles (por meio das camadas inferiores.). [????????????????]
+
+4) Cite 3 tipos de arquiteturas de aplicacoes em redes. Explique as principais caracteristicas de casa huma.
+	Cliente-servidor:	-provedor do servico "sempre" disponivel
+						-endereco de IP permanete
+	Peer-to-Peer(P2P):	- nohs entram/saem da rede
+						- enderecos de IP intermitentes
+						- auto escalabilidade
+
+	Hibrida:				
+
+5) O processo cliente eh aquele que efetua solicitacoes ao outro processo, chamado entao servidor.
+
+6) A >> porta << eh utilizada para identificar "onde no hospedeiro" estah rodando um processo.
+
+7) Sintaxe, semantica, regras e comportamento.
+
+O que eh definido por um protocolo na camada de aplicacao eh a forma como as aplicacoes irao de comunicar entre si.
+
+8) Transporte seguro das informacoes, chegada em ordem dos pacotes, garantia de entrega, garantia contra erros no pacote, temporizacao, BANDA.
+
+9) Os principais ervicos de transporte utilizados na internet sao orientado a conexao e nao orientado a conexao.
+UDP e TCP sao um exemplo de cada.
+
+O UDP nao garante nada; voce simplesmente adciona ao pacote o endereco de entrega e confia que vai dar certo.
+O TCP por sua vez garante entrega em ordem, controle de fluxo, controle de congestionamento, entrega confiavel (prevencao contra erros no pacote).
+
+10) Utilizam o TCP: web (usa HTTP, que roda em cima do TCP), transferencia de arquivos (fundamental que os dados cheguem em ordem e nao estejam corrompidos) e mensageiros instantaneos (mesmos requisitos da tranferencia de arquivos).
+Utilizam UDP: sevidores DNS (resolucao do nome), streaming de midia (YouTube) e mandar broadcast. 
+
+11) Perminitr a troca de mensagens entre navegadores.
+ Padronizar a maneira como mensagens sao transferidos em aplicacoes web (BROWSERS), permitindo a comunicacao entre eles; peritindo assim a comunicacao entre as mais diversas aplicacoes web e sites. [???]
+
+12) Armazenar informaçoes da pahgina acessada afim de 
+que na proxxima vez que o usuario acessar a mesma pagina web, seu carregamento se de muito mais rapidamente. 
+
+13) GET eh usado para OBTER um arquivos do servidor.(vai na URL)
+	POST eh usado para indicar que se deseja enviar algo ao servidor (i.e, um fofrmulario preenchido).
+
+14) Conexoes HTTP sao /stateless/, ou seja nao armazenam estado, portanto se depender apenas dele, nada asesabe sobre se o usuario ja se conectou previamente a um determinado servidor. Os /cookies/ sao nada mais do que
+identificadores, que mapeiam os usuarios que acessam sites, e sao usados para que as provedoras de servicos possam armazenas irformacoes sobre um usuario especifico. Dessa forma, caso um usuario se conecte por exemplo a um site de compras, da proxima vez que ele acesar esse site, sua proprietaria pode pode lhe direcionar publicidade especifica, ou ainda
+/saber/ quais os itens adicionados ao carrinho para compra numa visita previa ao usuario a este site.
+Potanto, eh uma forma (polemica) de se manter o estado da conexao.
+
+15) Um Web cache (proxy servers) tem como objetivo aumentar a velocidade de acesso dos usuarios de uma rede aa um conteudo desejado. Ele o faz armazenando cada objeto solicitado pelo usuario aa internet, na esperanca de que tal usuario vah requerir esse mesmo objeto mais tarde. Dessa forma,
+da proxima vez que o usuario requerir o mesmo objeto, como sua requisicao passa antesss pelo proxy, caso este jah possua o arquivo solicitado, responde prontamente ao usuario, economizando assim tempo que seria gasto solicitando-se um ocnteudo jah previamente acessado a um ISP da vida.
+
+16) O protocolo FTP tem como funcao a transferencia de arquivos.
+
+17) HTTP e FTP possuem ambos /conexao persistente/. Porem, ennquanto o     >HTTP< usa > uma soh conexao < para controle E trasferencia de dados (famoso band-in), o FTP mantem uma conexao entre os pares POREM essa conexao tem apenas funcao de controle (famoso band-out), pois para cada novo arquivo a ser enviado de um ao outro, cria-se uma nova conexao TCP para trasnferencia desse arquivo, e que eh encerrada quando a mesma eh terminada.
+
+18) o FTP mantem o estado da conexao DE CONTROLE apensa; as conexoes para tranferencia de arquivos sao intermitentes e unicas para cada arquivo.
+
+19) O protocolo SMTP tem como funcao APENAS ENVIAR emails do servidor que envia para o servidor receptor.
+
+20) O protoccolo POP vem para suprir a necessidade de se tranferir um email DO SERVIDOR DE EMAIL <PARA> O AGENTE DE USUARIO. Ele faz o download dos email recebidos para a maquina do "recipiente" (usuario).
+
+21) Assim como o POP, o IMAP visa possibilitar o acesso aas mensagens de email recebidas; porem, diferentemente do POP, o acesso aa essas mensagens eh feita pela rede, sem ecessidade de downloads, e permite diversaaas maracuataias nesas mensagens (marcacao como lida, criacao de marcadores, etc; fora que tudo esta ONLINE e nao preso a uma maquina).
+
+22) Quando enviamos email diretamente para o servidor local do usuario que irah acessa-los.
+Nao precisamos dele quando possuimos cliente  de email web.
+
+23) Sua funcao principal eh realizar o mapeamento <hostname, IP adress> para posterior RESOLUCAO conforme solicitada pelos clientes que, dispondo do hostname, necessitam do endereco IP para de fato acessarem determinado dominio.
+
+24) Pois isso permite auto escalabilidade, manutencao sem que toda a rede fique comprometida, tolerancia a falhas (caso um servidor DNS caia, ha muitos outros disponiveis) e ATENDER   MUUUITO MAIS REQUISICOES do qe se conseguiria caso houvesse um unico servidor DNS reponsavel.
+
+25) A hirarquia dos servidores DNS eh: 
+	servidor raiz 	> 	servidor Top-Level Domain	>	servidor autoridade
+
+26) Consulta DNS iterativa eh quando a resposta da consulta do "cliente primario" (o primeiro  PRIMEIRO a perguntar) vem do servidor que ele consultou E esse servidor nao ocnsultou nenhum outro servidor DNS.
+Caso este servidor consulte outro seridor DNS, entao a consulta passa a ser recursiva.
+
+27) O principio de funcionamento eh o mesmo de uma memoria cache qualquer; porem, o que fica armazenado aqui eh o endereco IP associado a um /hostname/ cujo endereco jah foi consultado previamente.
+
+28)	RR(Type == A): ocorre se o servidor DNS consultado eh o servidor autoridade do campo Name (nome que recebeu).
+RR(Type == NS): ocorre quando o servidor DNS consultado NAO EH autoridade para um dominio especifico. Neste caso, Name contem o hostname (dominio) solicitado e Value o hostname do servidor DNS que  eh autoridade para o dominio.
+RR(Type == CNAME): Name contem o dominio solicitado e Value seu nome canonico ("real" e unico).
+RR(Type == MX): Name eh um hostname de um servidor de email, e Value eh seu nome canonico.
+
+29) Aplicacooes distribuidas sao consideradas ecalaveis porque para cada novo cliente da rede, tem-se um novo servidor (pois seus componentes sao ambas as coisas, dependendo do referencial apenas).
+
+30) O tit-for-tat consiste em um par A, periodicamente, mandar um /chunk/ para um peer B, escolhido de forma aleatoria (a cada envio, sorteia-se um novo 'B'). SE o peer B receber de A chunks numa taxa mais alta do que algum dos peers ao qual estah conectado, entao A passa a ser um /uploader/ principal de B. Neste caso, B /tabmem comeca a enviar dados para A e, caso essa taxa seja maior do que algum dos /uploaders/ principais de A,   entao B se torna um uploader principal de A.
+Obs:	- se um peer nao eh um dos principais uploaders de A, entao A nao envia chunks a ele
+		- os peers aos quais A manda chunks JUNTAMENTE com A sao ditos /unchoked/
+
+Nota: esse mecanismo tende a "aproximar" os os nohs que  se servem mutuamente.
+
+31) A funcao das tabelas hash distribuidas [DHT] eh distribuir os pares <chave, arquivo> entre os peers de uma rede P2P de forma que qqer um deles possa, consultando essa tabela (base de dados) juntamente com a chave, saber qual o peer na rede que tem o arquivo que lhe interessa.
+
+32) Maximizar: fazer com que cada noh  possua /apenas/ o endereco do "proximo" par na rede, obrigando assim que a cada arquivo solicitado, /
+todos/ os pares possam ter de ser percorridos para que a resposta sobre qual peer possui o arquivo desejado seja entregue ao solicitante.
+
+Minimizar: disponibilizar "pontes aleatorias", para que nao seja necessario que se percorra toda a rede para, uma vez que a informacao solicitada foi encontrada, que ela   seja enviada para o solicitente. Tambem, com essas pontes aleatorias, pode se ignorar diversos pares que COM CERTEZA nao   possuem a informacao desejada.
+
+33) Uma dass formas eh, numa DHT circular com atalhos, fazer com que cada peer possua o endereco nao apenas do seu sucessor/predecessor e alguns atalhos, mas tambem conhecer o sucessor de seu sucessor.
+
+34) 

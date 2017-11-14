@@ -1,0 +1,64 @@
++ 1. Diferenca entre router and switch?!
++ 2. O que sao link-layer switches?
+
+
+
+1) Duas funcoes principais :
+    - Roteamento     : consiste em DETERMINAR a interface de saida adequada a cada pacote recebido nas interfaces de entrada do roteador.
+    - Encaminhamento : processo de MOVER um pacote da interface de saida para
+                        interface de saida adequada [despachar entra aqui??].
+
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+10)
+11)
+12)
+13)
+14)
+15)
+16)
+17) Eh uma estrategia para aumentar a quantidade que um endereço IP eh capaz 
+de endereçar. Usado para endereçar dispositivos em sub-redes.
+
+18) Principal problema eh estabelec
+
+19) 
+
+20) Ele 
+
+22) 
+- Traducao entre IPv4 E ipV6
+- Pilha dupla (dispositivos vem configurados com ambos os IPs)
+- Tunelamento 
+
+24)  Sao algoritmos que  buscam pela rota menos cutosa possivel.
+Sao dinamicos so que usam metricas(unidade de medida)/medidas que mudam com o 
+tmepo dinamicas, e estaticos os que usam metricas 
+estaticas.
+
+25)
+
+26) Possiveis oscilacoes nas metricas dinamicas de custo.
+
+27) Cada noh possui a informacao de distancias para seus vizinhos em um vetor;
+entao, ele passa esse vetor de distancias para seus vizinhos (de tempos em tem-
+pos e/ou on-demand).
+
+28) Sao limitados a redes de ateh 16 nos (poucos nohs).
++ Mudancas de custo para pior DEMORAM a serem propagadas
++ 
+
+29)
+
+30)
+
+34) É quando uma fonte lança mensagens para *todos* os des-
+tinos possíveis de uma sub-rede.
+Técnicas para melhorá-lo : 
+    + 
